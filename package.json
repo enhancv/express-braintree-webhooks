@@ -1,0 +1,45 @@
+{
+  "name": "express-braintree-webhooks",
+  "description": "Braintree webhooks middleware for express.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/enhancv/express-braintree-webhooks",
+  "author": {
+    "name": "Ivan Kerin",
+    "email": "ikerin@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/enhancv/express-braintree-webhooks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/enhancv/express-braintree-webhooks/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/enhancv/express-braintree-webhooks/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "src/webhooks",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "node_modules/eslint/bin/eslint.js {src,test} && node_modules/mocha/bin/mocha test"
+  },
+  "peerDependencies": {
+    "braintree": "^1.37.0"
+  },
+  "devDependencies": {
+    "blanket": "^1.2.3",
+    "braintree": "^1.37.0",
+    "chai": "^3.5.0",
+    "eslint": "^2.6.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.2.3",
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3"
+  },
+  "keywords": []
+}
