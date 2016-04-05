@@ -45,6 +45,15 @@ var returns = webhooks(gateway, webhookResponses);
 
 > This middleware does not provide a default url so you'll need to set it up yourself, as this usually involves adding a secret URL
 
+## Error handling
+
+On braintree error, missing webhook or an exception inside the webhook response, the "next" method is called with "Error" argument, to pass it to the next middleware (e.g. exception handling middleware)
+
+## Promises
+
+Webhook reponses can also return promises, in which case the "200 Success" response is sent to braintree on fullfilment of the promise. On rejection it is passed to next.
+
+
 ## License
 Copyright (c) 2016 Enhancv
 Licensed under the MIT license.
