@@ -25,7 +25,8 @@
     "node": ">= 4.0.0"
   },
   "scripts": {
-    "test": "node_modules/eslint/bin/eslint.js {src,test} && node_modules/mocha/bin/mocha test"
+    "test": "node_modules/mocha/bin/mocha test",
+    "lint": "node_modules/eslint/bin/eslint.js {src,test}"
   },
   "peerDependencies": {
     "braintree": "^1.37.0"
