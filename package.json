@@ -1,7 +1,7 @@
 {
   "name": "express-braintree-webhooks",
   "description": "Braintree webhooks middleware for express.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/enhancv/express-braintree-webhooks",
   "author": {
     "name": "Ivan Kerin",
@@ -22,7 +22,7 @@
   ],
   "main": "src/webhooks",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 4.0.0"
   },
   "scripts": {
     "test": "node_modules/eslint/bin/eslint.js {src,test} && node_modules/mocha/bin/mocha test"
