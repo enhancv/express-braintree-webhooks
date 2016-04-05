@@ -29,18 +29,21 @@ app.post(
 ```
 
 ## Documantation
-`webhooks(gateway, webhookResponses)`
+
+```javascript
+var returns = webhooks(gateway, webhookResponses);
+```
 
 | Item             | Description                                                   |
 | -----------------|---------------------------------------------------------------|
-| gateway          | [braintree gateway][1]                                        |
+| gateway          | [Braintree gateway][1]                                        |
 | webhookResponses | An object with [kind][2] as key and response as value         |
-| returns          | a method to be passed as express middleware                   |
+| returns          | A function to be passed as express middleware                 |
 
 [1]: https://github.com/braintree/braintree_node
 [2]: https://developers.braintreepayments.com/reference/general/webhooks/overview
 
-This middleware does not provide a default url so you'll need to set it up yourself, as this usually involves adding a secret URL
+> This middleware does not provide a default url so you'll need to set it up yourself, as this usually involves adding a secret URL
 
 ## License
 Copyright (c) 2016 Enhancv
