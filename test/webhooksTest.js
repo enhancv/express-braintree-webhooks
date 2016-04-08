@@ -16,7 +16,7 @@ const webhooks = require('../src/webhooks');
 describe('Webhooks middleware', () => {
     beforeEach(() => {
         this.action = sinon.spy();
-        this.res = { send: sinon.spy() };
+        this.res = { sendStatus: sinon.spy() };
         this.next = sinon.spy();
         this.notification = sample(braintree.WebhookNotification.Kind.Check);
     });
@@ -27,7 +27,7 @@ describe('Webhooks middleware', () => {
         middleware({ body: this.notification }, this.res, this.next);
 
         sinon.assert.calledOnce(this.action);
-        sinon.assert.calledOnce(this.res.send);
+        sinon.assert.calledOnce(this.res.sendStatus);
         sinon.assert.notCalled(this.next);
 
         assert.equal(
@@ -43,7 +43,7 @@ describe('Webhooks middleware', () => {
         middleware({ body: this.notification }, this.res, this.next);
         setTimeout(() => {
             sinon.assert.calledOnce(this.action);
-            sinon.assert.calledOnce(this.res.send);
+            sinon.assert.calledOnce(this.res.sendStatus);
             sinon.assert.notCalled(this.next);
         }, 10);
     });
@@ -56,7 +56,7 @@ describe('Webhooks middleware', () => {
 
         setTimeout(() => {
             sinon.assert.calledOnce(this.action);
-            sinon.assert.notCalled(this.res.send);
+            sinon.assert.notCalled(this.res.sendStatus);
             sinon.assert.calledOnce(this.next);
         }, 10);
     });
@@ -71,7 +71,7 @@ describe('Webhooks middleware', () => {
         middleware({ body: this.notification }, this.res, this.next);
 
         sinon.assert.calledOnce(this.action);
-        sinon.assert.calledOnce(this.res.send);
+        sinon.assert.calledOnce(this.res.sendStatus);
         sinon.assert.notCalled(this.next);
 
         assert.equal(
@@ -90,7 +90,7 @@ describe('Webhooks middleware', () => {
 
         middleware({ body: this.notification }, this.res, this.next);
 
-        sinon.assert.notCalled(this.res.send);
+        sinon.assert.notCalled(this.res.sendStatus);
         sinon.assert.calledOnce(this.next);
 
         assert.equal(
@@ -108,7 +108,7 @@ describe('Webhooks middleware', () => {
         middleware({ body: this.notification }, this.res, this.next);
 
         sinon.assert.calledOnce(this.action);
-        sinon.assert.notCalled(this.res.send);
+        sinon.assert.notCalled(this.res.sendStatus);
         sinon.assert.calledOnce(this.next);
 
         assert.equal(
@@ -123,7 +123,7 @@ describe('Webhooks middleware', () => {
         middleware({ body: { bt_signature: 'asd', bt_payload: 'asd' } }, this.res, this.next);
 
         sinon.assert.notCalled(this.action);
-        sinon.assert.notCalled(this.res.send);
+        sinon.assert.notCalled(this.res.sendStatus);
         sinon.assert.calledOnce(this.next);
     });
 });

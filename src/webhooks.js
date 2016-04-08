@@ -23,9 +23,9 @@ module.exports = function webhooks(gateway, kinds) {
                     const promise = kinds[notification.kind](notification);
 
                     if (promise) {
-                        promise.then(() => res.send(200), (error) => next(error));
+                        promise.then(() => res.sendStatus(200), (error) => next(error));
                     } else {
-                        return res.send(200);
+                        return res.sendStatus(200);
                     }
                 } catch (error) {
                     return next(error);
