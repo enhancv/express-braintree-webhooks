@@ -34,16 +34,19 @@ app.post(
 var returns = webhooks(gateway, webhookResponses);
 ```
 
-| Item             | Description                                                   |
-| -----------------|---------------------------------------------------------------|
-| gateway          | [Braintree gateway][1]                                        |
-| webhookResponses | An object with [kind][2] as key and response as value         |
-| returns          | A function to be passed as express middleware                 |
+| Item             | Description                                           |
+| -----------------|-------------------------------------------------------|
+| gateway          | [Braintree gateway][1]                                |
+| webhookResponses | An object with [kind][2] as key and response as value |
+| options          | Additional argument to pass to webhook responses      |
+| returns          | A function to be passed as express middleware         |
 
 [1]: https://github.com/braintree/braintree_node
 [2]: https://developers.braintreepayments.com/reference/general/webhooks/overview
 
 > This middleware does not provide a default url so you'll need to set it up yourself, as this usually involves adding a secret URL
+
+Using the last "options" argument you can pass additional dependancies to your webhook responses to keep your code more testable
 
 ## Error handling
 
