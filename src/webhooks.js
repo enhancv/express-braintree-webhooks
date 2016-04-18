@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Enhancv
  * Licensed under the MIT license.
  */
-module.exports = function webhooks(gateway, kinds) {
+module.exports = function webhooks(gateway, kinds, options) {
     return function action(req, res, next) {
         gateway.webhookNotification.parse(
             req.body.bt_signature,
@@ -20,7 +20,7 @@ module.exports = function webhooks(gateway, kinds) {
                 }
 
                 try {
-                    const promise = kinds[notification.kind](notification);
+                    const promise = kinds[notification.kind](notification, options);
 
                     if (promise) {
                         promise.then(() => res.sendStatus(200), (error) => next(error));

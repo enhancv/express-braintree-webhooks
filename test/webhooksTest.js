@@ -36,6 +36,20 @@ describe('Webhooks middleware', () => {
         );
     });
 
+
+    it('Should pass additional arguments directly', () => {
+        const test1 = { test1: 'test1' };
+        const middleware = webhooks(gateway, { check: this.action }, test1);
+
+        middleware({ body: this.notification }, this.res, this.next);
+
+        sinon.assert.calledOnce(this.action);
+        sinon.assert.calledOnce(this.res.sendStatus);
+        sinon.assert.notCalled(this.next);
+
+        assert.equal(this.action.getCall(0).args[1], test1);
+    });
+
     it('Should be able to handle promise resolution', () => {
         this.action = sinon.spy(() => new Promise((resolve) => resolve(true)));
         const middleware = webhooks(gateway, { check: this.action });
