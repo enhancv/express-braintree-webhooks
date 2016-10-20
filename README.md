@@ -31,7 +31,7 @@ app.post(
 ## Documantation
 
 ```javascript
-var returns = webhooks(gateway, webhookResponses);
+var returns = webhooks(gateway, webhookResponses, options);
 ```
 
 | Item             | Description                                           |
