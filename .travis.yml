@@ -3,6 +3,9 @@ node_js:
 - 6
 - 5
 - 4
+addons:
+    code_climate:
+        repo_token: 23e5f1ad6f1767b2be0ffbe9b6ee7dbfbc262b481a1dfb3807dc2dad3356cc30
 script:
 - yarn lint
 - yarn run coverage
