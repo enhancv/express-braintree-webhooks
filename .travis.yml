@@ -3,16 +3,12 @@ node_js:
 - 6
 - 5
 - 4
-before_script:
-- npm install codacy-coverage mocha-lcov-reporter
 script:
-- node_modules/eslint/bin/eslint.js {src,test}
-- node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha --report lcovonly
-  -- -R spec
-after_script:
-- cat coverage/lcov.info | node_modules/.bin/codacy-coverage
-before_deploy:
-- rm -rf coverage
+- yarn lint
+- yarn run coverage
+after_success:
+- npm install -g codeclimate-test-reporter
+- codeclimate-test-reporter < coverage/lcov.info
 deploy:
   provider: npm
   email: ikerin@gmail.com
