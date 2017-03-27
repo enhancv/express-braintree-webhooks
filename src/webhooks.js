@@ -1,3 +1,4 @@
+/* eslint consistent-return: "off" */
 /*
  * express-braintree-webhooks
  * https://github.com/enhancv/express-braintree-webhooks
@@ -23,7 +24,7 @@ module.exports = function webhooks(gateway, kinds, options) {
                     const promise = kinds[notification.kind](notification, options);
 
                     if (promise) {
-                        promise.then(() => res.sendStatus(200), (error) => next(error));
+                        promise.then(() => res.sendStatus(200), error => next(error));
                     } else {
                         return res.sendStatus(200);
                     }

@@ -1,16 +1,18 @@
 language: node_js
 node_js:
-  - 5
-  - 4
+- 6
+- 5
+- 4
 before_script:
-  - npm install codacy-coverage mocha-lcov-reporter
+- npm install codacy-coverage mocha-lcov-reporter
 script:
-  - node_modules/eslint/bin/eslint.js {src,test}
-  - node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- -R spec
+- node_modules/eslint/bin/eslint.js {src,test}
+- node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha --report lcovonly
+  -- -R spec
 after_script:
-  - cat coverage/lcov.info | node_modules/.bin/codacy-coverage
+- cat coverage/lcov.info | node_modules/.bin/codacy-coverage
 before_deploy:
-  - rm -rf coverage
+- rm -rf coverage
 deploy:
   provider: npm
   email: ikerin@gmail.com
@@ -19,3 +21,7 @@ deploy:
   on:
     tags: true
     repo: enhancv/express-braintree-webhooks
+notifications:
+  email: false
+  slack:
+    secure: nkcZL4/bvc3NTCVJtIm62HNuSV7ElxoV2nXLVjSJjuCdRe+x0SFOoY70sNOCd51QvOLdhglOZeEnTX46fe20KnSSbd9I6GKOr1dR5r6EWrT/1swjSQZKJnalDzhUSd4xV1sehmDc1duqpO1XhMJIzcPyWqj1fIQBuHzCHw7AV586JUsV5mCaZVr/6rQol8Vyw08cQZnhsrgAhXeuZbK07ab97i6fqz8iFmGQgvZiW7KOQElmQK6+C6NvkxHBUfgnUuN5U13siJzoQq+RCf3UX/LDNGHDlgqTnIw1gpK8pcIeQ53527AvHU2iOzO2+TJIYEgTJy+CzfWZpWrxCMWHMqzpeDjZCVJZWh85vPKdx/6itQnDEd4GuTcreOxdUdSJnKDlQ9qLdeRy4Pz7WR4vlseDX9QCaEHm6lukATZRfZUXJePN5fXZhfU+zooiXvr9RPBpmA6YPm39xeFBX7EZyhuEIvTlbUIIw3EA7ng55i5np879sk65/dLaagi/jH5xZ7tqSISe+OAzeQAwI0qFx+4fvWFgGXh8MnfM6HyoeLxdq8V40D5wCBNj/Ji5UeGYNfxm/h38dgmQHDeqMj0MLndrXosRs+pUgKmXWX8ClgiED1EymManoANdE50UYK7MJGso4QxbILkCs3/XTy2hOPG1NHOc6S3Kx/b1JN8PhU0=

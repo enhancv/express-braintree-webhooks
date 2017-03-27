@@ -1,12 +1,18 @@
+const path = require('path');
 const sinon = require('sinon');
 const assert = require('chai').assert;
 const braintree = require('braintree');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
+
 const gateway = braintree.connect({
     environment: braintree.Environment.Sandbox,
     merchantId: process.env.BRAINTREE_MERCHANT_ID,
     publicKey: process.env.BRAINTREE_PUBLIC_KEY,
     privateKey: process.env.BRAINTREE_PRIVATE_KEY,
 });
+
 
 const sample = function sample(kind, id) {
     return gateway.webhookTesting.sampleNotification(kind, id);
